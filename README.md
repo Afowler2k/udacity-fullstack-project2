@@ -28,19 +28,21 @@ tournament_test.py
 
 <h3>Running the project</h3>
 
-These files will need to be run inside the Vagrant VM provided by Udacity for this project.
-Once setup, you will need to run the tournament.sql file inside psql to initialize the database.
-To launch PostgresSQL run:
-psql
-This will launch the postgres command line. 
-Now initialize the database by typing:
-\i tournament.sql
-\q
+These files will need to be run inside the Vagrant VM provided by Udacity for this project.<br/>
+For additional setup information refer to <a href="https://docs.google.com/document/d/16IgOm4XprTaKxAa8w02y028oBECOoB1EI1ReddADEeY/pub?embedded=true">this document</a></br>
+Once setup, you will need to run the tournament.sql file inside psql to initialize the database.<br/>
+To launch PostgresSQL run:<br/>
+psql<br/>
+This will launch the postgres command line. <br/>
+Now initialize the database by typing:<br/>
+\i tournament.sql<br/>
+\q<br/>
+<br/>
+You will now be back at the command line where you can run the unit tests, type:<br/>
+python tournament_test.py<br/>
+<br/>
+You should see the successful completion on 9 unit tests.<br/>
 
-You will now be back at the command line where you can run the unit tests, type:
-python tournament_test.py
-
-You should see the successful completion on 9 unit tests.
 
 
 
