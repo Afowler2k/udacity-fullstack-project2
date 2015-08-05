@@ -144,7 +144,7 @@ def testPairingsNoRematch():
     pairings = swissPairingsNoRematch()
     if len(pairings) != 4:
         raise ValueError(
-            "For eight players, swissPairings should return four pairs.")
+            "For eight players, swissPairingsNoRematch should return four pairs.")
     [(pid1, pname1, pid2, pname2), (pid3, pname3, pid4, pname4),
      (pid5, pname5, pid6, pname6), (pid7, pname7, pid8, pname8)] = pairings
     correct_pairs = set([frozenset([id1, id3]), 
@@ -159,7 +159,7 @@ def testPairingsNoRematch():
                         ])
     if correct_pairs != actual_pairs:
         raise ValueError(
-            "After one match, players with one win should be paired.")
+            "In swissPairingsNoRematch(), after one match, players with one win should be paired.")
     #round 2
     reportMatch(pid1, pid2)
     reportMatch(pid3, pid4)
@@ -168,7 +168,7 @@ def testPairingsNoRematch():
     pairings = swissPairingsNoRematch()
     if len(pairings) != 4:
         raise ValueError(
-            "For eight players, swissPairings should return four pairs.")
+            "In round 2, for eight players, swissPairingsNoRematch should return four pairs.")
     [(pid1, pname1, pid2, pname2), (pid3, pname3, pid4, pname4),
      (pid5, pname5, pid6, pname6), (pid7, pname7, pid8, pname8)] = pairings
     correct_pairs = set([frozenset([id1, id5]), 
@@ -192,7 +192,7 @@ def testPairingsNoRematch():
     pairings = swissPairingsNoRematch()
     if len(pairings) != 3:
         raise ValueError(
-            "For eight players, swissPairings should return three pairs.")
+            "For eight players, swissPairingsNoRematch should return three pairs.")
     [(pid1, pname1, pid2, pname2), (pid3, pname3, pid4, pname4),
      (pid5, pname5, pid6, pname6)] = pairings
     correct_pairs = set([frozenset([id1, id6]), 
@@ -213,7 +213,7 @@ def testPairingsNoRematch():
     pairings = swissPairingsNoRematch()
     if len(pairings) != 3:
         raise ValueError(
-            "For six players, swissPairings should return three pairs.")
+            "For six players, swissPairingsNoRematch should return three pairs.")
     [(pid1, pname1, pid2, pname2), (pid3, pname3, pid4, pname4),
      (pid5, pname5, pid6, pname6)] = pairings
     correct_pairs = set([frozenset([id1, id4]), 
@@ -227,7 +227,8 @@ def testPairingsNoRematch():
     if correct_pairs != actual_pairs:
         raise ValueError(
             "After four matches, players not paired correctly.")
-    print "9. After four matches, no players play each other."
+
+    print "9. After four matches, no players have played against each other."
 
 if __name__ == '__main__':
     testDeleteMatches()

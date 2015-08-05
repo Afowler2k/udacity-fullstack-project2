@@ -56,11 +56,6 @@ def registerPlayer(name):
 
 
 def playerStandings():
-    # SELECT player.id, name,
-    # (SELECT COUNT(*) as wins FROM match where player.id = match.winner),
-    # (SELECT COUNT(*) as games FROM match WHERE player.id = match.winner OR player.id = match.loser)
-    # FROM player left join match on player.id = match.winner
-    # GROUP BY player.id;
     """Returns a list of the players and their win records, sorted by wins.
 
     The first entry in the list should be the player in first place, or a player
@@ -75,11 +70,6 @@ def playerStandings():
     """
     db = connect()
     cur = db.cursor()
-#    sql = ('SELECT player.id, name,'
-#           '(SELECT COUNT(*) as wins FROM match where player.id = match.winner),'
-#           '(SELECT COUNT(*) as games FROM match WHERE player.id = match.winner OR player.id = match.loser)'
-#           'FROM player left join match on player.id = match.winner '
-#           'GROUP BY player.id;')
     sql = ('SELECT * from playerStandings;')
     cur.execute(sql)
     standings = list(cur.fetchall())
@@ -137,7 +127,7 @@ def swissPairings():
     standings = playerStandings()
     pairCount = len(standings)/2;
     pairs = list()
-    # loop through the players in paris and match them togehter with the next one 
+    # loop through the players in pairs and match them together with the next one 
     for pair in range(0, pairCount):
         standingIndex = pair * 2;
         (id1, n1, w, m) = standings[standingIndex]
@@ -174,9 +164,11 @@ def swissPairingsNoRematch():
             # get players played against already
             playersPlayed = getOpponents(pId)
             # loop through remaining players to find someone to pair with
+            # It is possible to exit this loop without matching this player to anyone
+            # if they have played all the unmatched players already
             for idx2 in range(idx + 1, len(standings)):
                 (p2Id, p2Name, p2Wins, p2Matches) = standings[idx2]
-                # if player has not already been match and not already played player above, 
+                # if player has not already been matched and not already played player above, 
                 # pair them
                 if p2Id not in matched and p2Id not in playersPlayed:
                     pairs.append( [pId, pName, p2Id, p2Name] )
